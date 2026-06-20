@@ -73,27 +73,6 @@ http://localhost/proyectoOKA
 
 ---
 
-## Estructura del Proyecto
-
-proyectoOKA/
-│── docs/                Documentación técnica
-│── frontend/            Interfaces de usuario
-│── backend/             Lógica del sistema (PHP)
-│── database/            Scripts de base de datos
-│── README.md            Documentación principal
-
----
-
-## Funcionalidades Principales
-
-* Gestión de pacientes
-* Registro y administración de traslados
-* Acceso a documentación mediante QR
-* Encuestas de satisfacción
-* Interfaces administrativas y móviles
-
----
-
 ## Control de Versiones
 
 Se utilizan las siguientes convenciones de commits:
