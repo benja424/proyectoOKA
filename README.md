@@ -108,7 +108,6 @@ Pasos básicos:
 
 ## Autores
 
-Equipo ROKA
 Agustin Alfonso, Benjamin Olivera, Santiago Rosas, Thomas Katopulis
 ---
 
