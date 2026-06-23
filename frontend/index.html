@@ -1,404 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Usuario | Hospital de Clínicas Dr. Manuel Quintela</title>
-<meta name="description" content="Accedé a la documentación e indicaciones médicas del Hospital de Clínicas desde tu celular.">
-<link rel="icon" type="image/png" href="img/logohc.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="portal-usuario.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Usuario | S.I.G.S.M. — Hospital de Clínicas</title>
+  <meta name="description" content="Accedé a la documentación e indicaciones médicas del Hospital de Clínicas desde tu dispositivo.">
+  <link rel="icon" type="image/png" href="img/logohc.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/portal-usuario.css">
 </head>
 <body>
 
-<!-- ============================================
-     HEADER
-     ============================================ -->
+<!-- HEADER -->
 <header class="site-header">
-  <div class="site-header__inner">
+  <div class="header-inner">
     <a href="index.html" class="marca">
       <img src="img/logohc.png" alt="Hospital de Clínicas Dr. Manuel Quintela" class="marca__logo">
-      <span class="marca__texto">
-        <span class="marca__sistema">S.I.G.S.M.</span>
-      </span>
+      <span class="marca__sistema">S.I.G.S.M.</span>
     </a>
-
-    <a href="login.html" class="btn-login-header">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-      Login Funcionarios
+    <a href="login.html" class="btn-login">
+      <img src="img/signin.png" alt="" class="btn-login__icono" aria-hidden="true">
+      <span>Login Funcionarios</span>
     </a>
   </div>
 </header>
 
-<!-- ============================================
-     HERO + BUSCADOR
-     ============================================ -->
+<!-- HERO + BUSCADOR -->
 <section class="hero">
   <div class="contenedor">
-    <span class="hero__eyebrow">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-      Portal de documentación para pacientes
-    </span>
-    <h1>Accedé a tus indicaciones e información médica</h1>
-    <p>Buscá y consultá la documentación que el Hospital de Clínicas pone a tu disposición, sin necesidad de copias impresas.</p>
+    <h1>Documentación e indicaciones médicas</h1>
+    <p>Buscá y consultá los documentos que el Hospital de Clínicas pone a tu disposición, sin necesidad de copias impresas.</p>
 
     <form class="buscador" role="search" onsubmit="return false;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <img src="img/busqueda.png" alt="" class="buscador__icono" aria-hidden="true">
       <input
         type="search"
         id="buscador-input"
-        placeholder="Buscar por nombre del estudio o indicación…"
-        aria-label="Buscar documento">
-      <button type="submit">Buscar</button>
+        placeholder="Buscar por nombre del documento…"
+        aria-label="Buscar documento"
+        autocomplete="off">
+      <button type="submit" class="buscador__btn">Buscar</button>
     </form>
 
     <div class="filtros" role="group" aria-label="Filtrar por categoría">
-      <button type="button" class="filtro-chip" data-filtro="todos" aria-pressed="true">Todos</button>
-      <button type="button" class="filtro-chip" data-filtro="estudios">Estudios y diagnóstico</button>
-      <button type="button" class="filtro-chip" data-filtro="cirugia">Cirugía y procedimientos</button>
-      <button type="button" class="filtro-chip" data-filtro="tratamientos">Tratamientos y medicación</button>
-      <button type="button" class="filtro-chip" data-filtro="nefrologia">Nefrología y trasplante</button>
-      <button type="button" class="filtro-chip" data-filtro="encuestas">Encuestas</button>
+      <button class="filtro-chip" data-filtro="todos"        aria-pressed="true">Todos</button>
+      <button class="filtro-chip" data-filtro="estudios"     aria-pressed="false">Estudios y diagnóstico</button>
+      <button class="filtro-chip" data-filtro="cirugia"      aria-pressed="false">Cirugía y procedimientos</button>
+      <button class="filtro-chip" data-filtro="tratamientos" aria-pressed="false">Tratamientos</button>
+      <button class="filtro-chip" data-filtro="nefrologia"   aria-pressed="false">Nefrología y trasplante</button>
     </div>
   </div>
 </section>
 
-<!-- ============================================
-     LISTADO DE DOCUMENTOS
-     ============================================ -->
+<!-- MAIN -->
 <main class="documentos">
   <div class="contenedor">
+<!-- Lista plana de documentos -->
+    <div class="doc-lista" id="doc-lista">
 
-    <!-- Categoría: Estudios y diagnóstico -->
-    <div class="categoria" data-categoria="estudios">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#00aeef;"></span>
-        Estudios y diagnóstico
-        <span class="categoria__contador">4 documentos</span>
-      </h2>
-      <div class="grid-docs">
+      <a href="#" class="doc-fila" data-titulo="preparación para estudios imagenológicos" data-categoria="estudios">
+        <span class="doc-fila__titulo">Preparación para estudios imagenológicos</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
 
-        <a href="#" class="doc-card" data-doc="preparacion-imagenologicos.pdf" data-titulo="Preparación para estudios imagenológicos">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Preparación para estudios imagenológicos</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
+      <a href="#" class="doc-fila" data-titulo="estudios diagnósticos con pertecneciato" data-categoria="estudios">
+        <span class="doc-fila__titulo">Estudios diagnósticos con pertecneciato</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
 
-        <a href="#" class="doc-card" data-doc="pertecneciato.pdf" data-titulo="Estudios diagnósticos con pertecneciato">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Estudios diagnósticos con pertecneciato</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
+      <a href="#" class="doc-fila" data-titulo="centellograma de perfusión miocárdica" data-categoria="estudios">
+        <span class="doc-fila__titulo">Centellograma de perfusión miocárdica</span>        
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
 
-        <a href="#" class="doc-card" data-doc="centellograma-miocardica.pdf" data-titulo="Centellograma de perfusión miocárdica">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Centellograma de perfusión miocárdica</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
+      <a href="#" class="doc-fila" data-titulo="indicaciones ecocardiograma con dobutamina" data-categoria="estudios">
+        <span class="doc-fila__titulo">Indicaciones ecocardiograma con dobutamina</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
 
-        <a href="#" class="doc-card" data-doc="ecocardiograma-dobutamina.pdf" data-titulo="Indicaciones ecocardiograma con dobutamina">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones ecocardiograma con dobutamina</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
+      <a href="#" class="doc-fila" data-titulo="indicaciones de interrupción voluntaria del embarazo" data-categoria="cirugia">
+        <span class="doc-fila__titulo">Indicaciones de interrupción voluntaria del embarazo</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
 
+      <a href="#" class="doc-fila" data-titulo="prostatectomía radical indicaciones e información" data-categoria="cirugia">
+        <span class="doc-fila__titulo">Prostatectomía radical — indicaciones e información</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="indicaciones ecocardiograma transesofágico" data-categoria="cirugia">
+        <span class="doc-fila__titulo">Indicaciones ecocardiograma transesofágico</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="indicaciones para pacientes en tratamiento con warfarina" data-categoria="tratamientos">
+        <span class="doc-fila__titulo">Indicaciones para pacientes en tratamiento con warfarina</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="pauta para pacientes ostomizados" data-categoria="tratamientos">
+        <span class="doc-fila__titulo">Pauta para pacientes ostomizados</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="indicaciones para ingreso a centro de nefrología y trasplante" data-categoria="nefrologia">
+        <span class="doc-fila__titulo">Indicaciones para ingreso a centro de nefrología y trasplante</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="plan de alta de enfermería nefrología" data-categoria="nefrologia">
+        <span class="doc-fila__titulo">Plan de alta de enfermería — Nefrología</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="indicaciones de enfermería para usuarios trasplantados" data-categoria="nefrologia">
+        <span class="doc-fila__titulo">Indicaciones de enfermería para usuarios trasplantados</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+      <a href="#" class="doc-fila" data-titulo="prevención de infecciones" data-categoria="nefrologia">
+        <span class="doc-fila__titulo">Prevención de infecciones</span>
+        <span class="doc-fila__ver">Ver →</span>
+      </a>
+
+    </div>
+
+<!-- Banner encuestas -->
+    <div class="banner-encuestas">
+      <div class="banner-encuestas__texto">
+        <h3>Encuestas de satisfacción</h3>
+        <p>Tu opinión es anónima y ayuda a mejorar los servicios del hospital.</p>
+      </div>
+      <div class="banner-encuestas__acciones">
+        <a href="#" class="btn-encuesta">Comenzar Encuesta</a>
       </div>
     </div>
 
-    <!-- Categoría: Cirugía y procedimientos -->
-    <div class="categoria" data-categoria="cirugia">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#5bc8f2;"></span>
-        Cirugía y procedimientos
-        <span class="categoria__contador">3 documentos</span>
-      </h2>
-      <div class="grid-docs">
-
-        <a href="#" class="doc-card" data-doc="ive.pdf" data-titulo="Indicaciones de interrupción voluntaria del embarazo" data-sensible="true">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones de interrupción voluntaria del embarazo</span>
-          </div>
-          <span class="badge-sensible">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Acceso protegido
-          </span>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-doc="prostatectomia.pdf" data-titulo="Prostatectomía radical — indicaciones e información">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Prostatectomía radical — indicaciones e información</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-doc="ecocardiograma-transesofagico.pdf" data-titulo="Indicaciones ecocardiograma transesofágico">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones ecocardiograma transesofágico</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Categoría: Tratamientos y medicación -->
-    <div class="categoria" data-categoria="tratamientos">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#047aa6;"></span>
-        Tratamientos y medicación
-        <span class="categoria__contador">1 documento</span>
-      </h2>
-      <div class="grid-docs">
-
-        <a href="#" class="doc-card" data-doc="warfarina.pdf" data-titulo="Indicaciones para pacientes en tratamiento con warfarina">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones para pacientes en tratamiento con warfarina</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Categoría: Nefrología y trasplante -->
-    <div class="categoria" data-categoria="nefrologia">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#00aeef;"></span>
-        Nefrología y trasplante
-        <span class="categoria__contador">4 documentos</span>
-      </h2>
-      <div class="grid-docs">
-
-        <a href="#" class="doc-card" data-doc="ingreso-nefrologia.pdf" data-titulo="Indicaciones para ingreso a centro de nefrología y trasplante">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones para ingreso a centro de nefrología y trasplante</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-doc="plan-alta-nefrologia.pdf" data-titulo="Plan de alta de enfermería — Nefrología">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Plan de alta de enfermería — Nefrología</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-doc="enfermeria-trasplantados.pdf" data-titulo="Indicaciones de enfermería para usuarios trasplantados">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Indicaciones de enfermería para usuarios trasplantados</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-doc="prevencion-infecciones.pdf" data-titulo="Prevención de infecciones">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Prevención de infecciones</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Categoría: Otras pautas -->
-    <div class="categoria" data-categoria="tratamientos">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#5bc8f2;"></span>
-        Otras pautas para pacientes
-        <span class="categoria__contador">1 documento</span>
-      </h2>
-      <div class="grid-docs">
-
-        <a href="#" class="doc-card" data-doc="pacientes-ostomizados.pdf" data-titulo="Pauta para pacientes ostomizados">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </span>
-            <span class="doc-card__titulo">Pauta para pacientes ostomizados</span>
-          </div>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-            PDF · Ver documento
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Categoría: Encuestas -->
-    <div class="categoria" data-categoria="encuestas">
-      <h2 class="categoria__titulo">
-        <span class="categoria__punto" style="background:#047aa6;"></span>
-        Encuestas de satisfacción
-        <span class="categoria__contador">2 disponibles</span>
-      </h2>
-      <div class="grid-docs">
-
-        <a href="#" class="doc-card" data-titulo="Encuesta estándar de satisfacción">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            </span>
-            <span class="doc-card__titulo">Encuesta estándar de satisfacción</span>
-          </div>
-          <span class="badge-sensible" style="color:#047aa6; background:var(--azul-fondo);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.5-2.5 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            Anónima
-          </span>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Formulario · 3 min
-          </span>
-        </a>
-
-        <a href="#" class="doc-card" data-titulo="Encuesta de evolución — Fondo Nacional de Recursos">
-          <div class="doc-card__top">
-            <span class="doc-card__icono">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            </span>
-            <span class="doc-card__titulo">Encuesta de evolución — Fondo Nacional de Recursos</span>
-          </div>
-          <span class="badge-sensible" style="color:#047aa6; background:var(--azul-fondo);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.5-2.5 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            Anónima
-          </span>
-          <span class="doc-card__meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Formulario · 4 min
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- Estado vacío (se muestra con JS de la búsqueda) -->
-    <div class="sin-resultados" id="sin-resultados">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <h3>No encontramos documentos</h3>
-      <p>Probá con otro nombre o revisá las categorías disponibles.</p>
-    </div>
+    <p class="sin-resultados" id="sin-resultados">
+      No encontramos documentos para esa búsqueda. Probá con otro término o cambiá el filtro.
+    </p>
 
   </div>
 </main>
 
-<!-- ============================================
-     FOOTER
-     ============================================ -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="contenedor">
     <div class="footer-grid">
-
       <div class="footer-col">
         <h4>Hospital de Clínicas</h4>
-        <p>Dr. Manuel Quintela<br>Universidad de la República</p>
+        <address>
+          <p>Dr. Manuel Quintela</p>
+          <p>Universidad de la República</p>
+        </address>
       </div>
-
       <div class="footer-col">
         <h4>Contacto</h4>
-        <div class="footer-contacto-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 0 1 2-2h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 12l5 2v3a2 2 0 0 1-2 2h-1C8.5 19 5 15.5 5 8V5z"/></svg>
-          <span>2487 1010</span>
-        </div>
-        <div class="footer-contacto-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Av. Italia s/n, Montevideo</span>
-        </div>
-        <div class="footer-contacto-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
-          <span>Atención al usuario — Piso 1</span>
-        </div>
+        <address>
+          <p>Teléfono: 2487 1010</p>
+          <p>Av. Italia s/n, Montevideo</p>
+          <p>Atención al usuario — Piso 1</p>
+        </address>
       </div>
-
       <div class="footer-col">
         <h4>Acceso interno</h4>
         <p>¿Sos funcionario del hospital?</p>
-        <div class="footer-contacto-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-          <a href="login.html">Ingresar al portal funcionarios</a>
-        </div>
+        <a href="login.html">Ingresar al portal de funcionarios →</a>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <span>© 2026 Hospital de Clínicas — S.I.G.S.M.</span>
       <span>Proyecto de egreso · BT Tecnologías de la Información</span>
@@ -406,106 +177,36 @@
   </div>
 </footer>
 
-<!-- ============================================
-     MODAL — VISOR DE PDF (embed)
-     ============================================ -->
-<div class="pdf-modal" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-titulo">
-  <div class="pdf-modal__panel">
-    <div class="pdf-modal__header">
-      <span class="pdf-modal__titulo" id="pdf-modal-titulo">Documento</span>
-      <div class="pdf-modal__acciones">
-        <a href="#" class="pdf-modal__btn" id="pdf-modal-descargar" download>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Descargar
-        </a>
-        <button type="button" class="pdf-modal__cerrar" id="pdf-modal-cerrar" aria-label="Cerrar visor de documento">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="pdf-modal__body">
-      <embed id="pdf-modal-embed" src="" type="application/pdf">
-    </div>
-  </div>
-</div>
-
 <script>
-  // ============================================
-  // Buscador + filtros (solo UI, sin backend)
-  // ============================================
-  const buscadorInput = document.getElementById('buscador-input');
-  const chips = document.querySelectorAll('.filtro-chip');
-  const categorias = document.querySelectorAll('.categoria');
-  const sinResultados = document.getElementById('sin-resultados');
+  const input  = document.getElementById('buscador-input');
+  const chips  = document.querySelectorAll('.filtro-chip');
+  const filas  = document.querySelectorAll('.doc-fila');
+  const sinRes = document.getElementById('sin-resultados');
 
-  function aplicarFiltros() {
-    const texto = buscadorInput.value.trim().toLowerCase();
-    const chipActivo = document.querySelector('.filtro-chip[aria-pressed="true"]');
-    const filtro = chipActivo ? chipActivo.dataset.filtro : 'todos';
-    let totalVisible = 0;
+  function filtrar() {
+    const texto  = input.value.trim().toLowerCase();
+    const activo = document.querySelector('.filtro-chip[aria-pressed="true"]').dataset.filtro;
+    let total    = 0;
 
-    categorias.forEach((cat) => {
-      const coincideCategoria = filtro === 'todos' || cat.dataset.categoria === filtro;
-      let coincidencias = 0;
-
-      cat.querySelectorAll('.doc-card').forEach((card) => {
-        const titulo = (card.dataset.titulo || '').toLowerCase();
-        const coincideTexto = texto === '' || titulo.includes(texto);
-        const visible = coincideCategoria && coincideTexto;
-        card.style.display = visible ? '' : 'none';
-        if (visible) coincidencias++;
-      });
-
-      cat.style.display = coincidencias > 0 ? '' : 'none';
-      totalVisible += coincidencias;
+    filas.forEach(fila => {
+      const coincideTexto = texto === '' || fila.dataset.titulo.includes(texto);
+      const coincideCat   = activo === 'todos' || fila.dataset.categoria === activo;
+      const visible       = coincideTexto && coincideCat;
+      fila.toggleAttribute('hidden', !visible);
+      if (visible) total++;
     });
 
-    sinResultados.style.display = totalVisible === 0 ? 'block' : 'none';
+    sinRes.style.display = total === 0 ? 'block' : 'none';
   }
 
-  buscadorInput.addEventListener('input', aplicarFiltros);
+  input.addEventListener('input', filtrar);
 
-  chips.forEach((chip) => {
+  chips.forEach(chip => {
     chip.addEventListener('click', () => {
-      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
       chip.setAttribute('aria-pressed', 'true');
-      aplicarFiltros();
+      filtrar();
     });
-  });
-
-  // ============================================
-  // Visor de PDF embebido (modal)
-  // ============================================
-  const modal = document.getElementById('pdf-modal');
-  const modalEmbed = document.getElementById('pdf-modal-embed');
-  const modalTitulo = document.getElementById('pdf-modal-titulo');
-  const modalDescargar = document.getElementById('pdf-modal-descargar');
-  const modalCerrar = document.getElementById('pdf-modal-cerrar');
-
-  document.querySelectorAll('.doc-card[data-doc]').forEach((card) => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      const ruta = 'documentos/' + card.dataset.doc;
-      modalEmbed.src = ruta;
-      modalTitulo.textContent = card.dataset.titulo || 'Documento';
-      modalDescargar.href = ruta;
-      modal.classList.add('activo');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function cerrarModal() {
-    modal.classList.remove('activo');
-    modalEmbed.src = '';
-    document.body.style.overflow = '';
-  }
-
-  modalCerrar.addEventListener('click', cerrarModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) cerrarModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('activo')) cerrarModal();
   });
 </script>
 
