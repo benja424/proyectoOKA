@@ -63,7 +63,7 @@ input:focus-visible {
   text-decoration: none;
 }
 
-.login-marca__logo { height: 56px; width: auto; }
+.login-marca__logo { height: 150px; width: auto; }
 
 .login-marca__texto {
   text-align: center;

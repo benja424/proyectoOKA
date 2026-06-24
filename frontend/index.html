@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Usuario | S.I.G.S.M. — Hospital de Clínicas</title>
-  <meta name="description" content="Accedé a la documentación e indicaciones médicas del Hospital de Clínicas desde tu dispositivo.">
   <link rel="icon" type="image/png" href="img/logohc.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/portal-usuario.css">
 </head>
@@ -18,7 +15,6 @@
   <div class="header-inner">
     <a href="index.html" class="marca">
       <img src="img/logohc.png" alt="Hospital de Clínicas Dr. Manuel Quintela" class="marca__logo">
-      <span class="marca__sistema">S.I.G.S.M.</span>
     </a>
     <a href="login.html" class="btn-login">
       <img src="img/signin.png" alt="" class="btn-login__icono" aria-hidden="true">
@@ -39,7 +35,6 @@
         type="search"
         id="buscador-input"
         placeholder="Buscar por nombre del documento…"
-        aria-label="Buscar documento"
         autocomplete="off">
       <button type="submit" class="buscador__btn">Buscar</button>
     </form>
@@ -60,89 +55,73 @@
 <!-- Lista plana de documentos -->
     <div class="doc-lista" id="doc-lista">
 
-      <a href="#" class="doc-fila" data-titulo="preparación para estudios imagenológicos" data-categoria="estudios">
+      <a class="doc-fila" data-titulo="preparación para estudios imagenológicos" data-categoria="estudios">
         <span class="doc-fila__titulo">Preparación para estudios imagenológicos</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="estudios diagnósticos con pertecneciato" data-categoria="estudios">
+      <a class="doc-fila" data-titulo="estudios diagnósticos con pertecneciato" data-categoria="estudios">
         <span class="doc-fila__titulo">Estudios diagnósticos con pertecneciato</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="centellograma de perfusión miocárdica" data-categoria="estudios">
+      <a class="doc-fila" data-titulo="centellograma de perfusión miocárdica" data-categoria="estudios">
         <span class="doc-fila__titulo">Centellograma de perfusión miocárdica</span>        
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones ecocardiograma con dobutamina" data-categoria="estudios">
+      <a class="doc-fila" data-titulo="indicaciones ecocardiograma con dobutamina" data-categoria="estudios">
         <span class="doc-fila__titulo">Indicaciones ecocardiograma con dobutamina</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones de interrupción voluntaria del embarazo" data-categoria="cirugia">
+      <a class="doc-fila" data-titulo="indicaciones de interrupción voluntaria del embarazo" data-categoria="cirugia">
         <span class="doc-fila__titulo">Indicaciones de interrupción voluntaria del embarazo</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="prostatectomía radical indicaciones e información" data-categoria="cirugia">
+      <a class="doc-fila" data-titulo="prostatectomía radical indicaciones e información" data-categoria="cirugia">
         <span class="doc-fila__titulo">Prostatectomía radical — indicaciones e información</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones ecocardiograma transesofágico" data-categoria="cirugia">
+      <a class="doc-fila" data-titulo="indicaciones ecocardiograma transesofágico" data-categoria="cirugia">
         <span class="doc-fila__titulo">Indicaciones ecocardiograma transesofágico</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones para pacientes en tratamiento con warfarina" data-categoria="tratamientos">
+      <a class="doc-fila" data-titulo="indicaciones para pacientes en tratamiento con warfarina" data-categoria="tratamientos">
         <span class="doc-fila__titulo">Indicaciones para pacientes en tratamiento con warfarina</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="pauta para pacientes ostomizados" data-categoria="tratamientos">
+      <a class="doc-fila" data-titulo="pauta para pacientes ostomizados" data-categoria="tratamientos">
         <span class="doc-fila__titulo">Pauta para pacientes ostomizados</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones para ingreso a centro de nefrología y trasplante" data-categoria="nefrologia">
+      <a class="doc-fila" data-titulo="indicaciones para ingreso a centro de nefrología y trasplante" data-categoria="nefrologia">
         <span class="doc-fila__titulo">Indicaciones para ingreso a centro de nefrología y trasplante</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="plan de alta de enfermería nefrología" data-categoria="nefrologia">
+      <a class="doc-fila" data-titulo="plan de alta de enfermería nefrología" data-categoria="nefrologia">
         <span class="doc-fila__titulo">Plan de alta de enfermería — Nefrología</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="indicaciones de enfermería para usuarios trasplantados" data-categoria="nefrologia">
+      <a class="doc-fila" data-titulo="indicaciones de enfermería para usuarios trasplantados" data-categoria="nefrologia">
         <span class="doc-fila__titulo">Indicaciones de enfermería para usuarios trasplantados</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
-      <a href="#" class="doc-fila" data-titulo="prevención de infecciones" data-categoria="nefrologia">
+      <a  class="doc-fila" data-titulo="prevención de infecciones" data-categoria="nefrologia">
         <span class="doc-fila__titulo">Prevención de infecciones</span>
         <span class="doc-fila__ver">Ver →</span>
       </a>
 
     </div>
 
-<!-- Banner encuestas -->
-    <div class="banner-encuestas">
-      <div class="banner-encuestas__texto">
-        <h3>Encuestas de satisfacción</h3>
-        <p>Tu opinión es anónima y ayuda a mejorar los servicios del hospital.</p>
-      </div>
-      <div class="banner-encuestas__acciones">
-        <a href="#" class="btn-encuesta">Comenzar Encuesta</a>
-      </div>
-    </div>
-
-    <p class="sin-resultados" id="sin-resultados">
-      No encontramos documentos para esa búsqueda. Probá con otro término o cambiá el filtro.
-    </p>
-
-  </div>
 </main>
 
 <!-- FOOTER -->
